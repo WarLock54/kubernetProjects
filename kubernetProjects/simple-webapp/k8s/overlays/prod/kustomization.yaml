@@ -1,0 +1,13 @@
+namespace: simple-webapp
+
+resources:
+  - ../../base
+
+images:
+  - name: REPLACEME_REGISTRY/simple-nginx
+    newName: simple-nginx
+    newTag: latest
+
+replicas:
+  - name: nginx-web
+    count: 2
