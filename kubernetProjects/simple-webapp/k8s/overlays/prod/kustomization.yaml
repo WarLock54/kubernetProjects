@@ -4,7 +4,7 @@ resources:
   - ../../base
 
 images:
-  - name: REPLACEME_REGISTRY/simple-nginx
+  - name: docker.io/0nur/simple-nginx
     newName: simple-nginx
     newTag: latest
 

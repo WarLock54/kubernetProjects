@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Multi-tier App</title>
+</head>
+<body>
+<h1>Multi-tier App — Frontend</h1>
+<div id="messages">Loading...</div>
+<script>
+async function fetchMessages(){
+try{
+const r = await fetch('/api/messages');
+const j = await r.json();
+document.getElementById('messages').innerText = JSON.stringify(j, null, 2);
+}catch(e){
+document.getElementById('messages').innerText = 'Error: '+e.message;
+}
+}
+fetchMessages();
+</script>
+</body>
+</html>

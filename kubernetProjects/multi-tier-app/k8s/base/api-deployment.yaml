@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: multi-tier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: api:latest # <-- CHANGE THIS LINE
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
+        envFrom:
+          - configMapRef:
+              name: app-config
+          - secretRef:
+              name: db-secret
