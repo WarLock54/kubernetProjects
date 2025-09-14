@@ -1,0 +1,19 @@
+# log-generator.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-generator
+  template:
+    metadata:
+      labels:
+        app: log-generator
+    spec:
+      containers:
+      - name: log-generator
+        # Kendi Docker Hub kullanıcı adın ve image adını yaz
+        image: 0nur/log-generator-app:1.0

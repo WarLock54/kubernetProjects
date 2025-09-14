@@ -1,19 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kibana
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: kibana
-  template:
-    metadata:
-      labels:
-        app: kibana
-    spec:
-      containers:
-      - name: kibana
-        image: docker.elastic.co/kibana/kibana:7.17.4
-        ports:
-        - containerPort: 5601
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY app.py .
+
+# Set environment variables
+ENV PYTHONUNBUFFERED 1
+ENV POD_NAME=log-generator-pod
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
